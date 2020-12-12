@@ -21,7 +21,7 @@ int main()
 
     int KILL = 0;
 
-    sf::RenderWindow window(sf::VideoMode(910, 650), "SFML", sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(910, 650), "63010930_Stage1", sf::Style::Close);
     Menu menu(window.getSize().x, window.getSize().y);
     sf::Texture texture;
     if (!texture.loadFromFile("Background main.jpg"));
@@ -935,7 +935,7 @@ int main()
 
             sf::Vector2i screenDimensions(910, 650);
             sf::RenderWindow window;
-            window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "NuchtuMan", sf::Style::Close);
+            window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "63010930_Stage2", sf::Style::Close);
 
 
 
@@ -1745,7 +1745,7 @@ int main()
 
             sf::Vector2i screenDimensions(910, 650);
             sf::RenderWindow window;
-            window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "NuchtuMan", sf::Style::Close);
+            window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "63010930_Stage3", sf::Style::Close);
 
 
 
