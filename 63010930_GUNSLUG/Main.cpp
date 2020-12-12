@@ -21,10 +21,10 @@ int main()
 
     int KILL = 0;
 
-    sf::RenderWindow window(sf::VideoMode(910, 650), "63010930_Stage1", sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(1520, 720), "63010930_Stage1", sf::Style::Close);
     Menu menu(window.getSize().x, window.getSize().y);
     sf::Texture texture;
-    if (!texture.loadFromFile("Background main.jpg"));
+    if (!texture.loadFromFile("background/background main.png"));
     {
         //handle error
     }
@@ -110,29 +110,26 @@ int main()
             std::vector<Platform*> platforms;
             std::vector<Platform*> platforms1;
 
-            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(400.0f, 50.0f), sf::Vector2f(500.0f, 300.0f)));
-            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(200.0f, 50.0f), sf::Vector2f(2000.0f, 300.0f)));
-            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(300.0f, 50.0f), sf::Vector2f(2950.0f, 200.0f)));
-            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(400.0f, 50.0f), sf::Vector2f(5050.0f, 300.0f)));
-            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(200.0f, 50.0f), sf::Vector2f(6850.0f, 300.0f)));
-            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(300.0f, 50.0f), sf::Vector2f(8650.0f, 300.0f)));
-            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(300.0f, 50.0f), sf::Vector2f(10050.0f, 300.0f)));
-            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(300.0f, 50.0f), sf::Vector2f(12550.0f, 300.0f)));
-            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(300.0f, 50.0f), sf::Vector2f(13850.0f, 300.0f)));
-            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(300.0f, 50.0f), sf::Vector2f(15550.0f, 300.0f)));
-            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(300.0f, 50.0f), sf::Vector2f(16650.0f, 300.0f)));
+            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(2200.0f, 50.0f), sf::Vector2f(900.0f, 580.0f)));
+            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(180.0f, 3.0f), sf::Vector2f(2650.0f, 520.0f)));
+            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(180.0f, 3.0f), sf::Vector2f(3420.0f, 520.0f)));
+            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(500.0f, 3.0f), sf::Vector2f(3060.0f, 400.0f)));
+            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(400.0f, 3.0f), sf::Vector2f(3730.0f, 390.0f)));
+            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(500.0f, 3.0f), sf::Vector2f(4300.0f, 390.0f)));
+            platforms.push_back(new Platform(&platform6Texture, sf::Vector2f(180.0f, 3.0f), sf::Vector2f(4660.0f, 520.0f)));
+           
 
 
             //ground&ceiling
             platforms1.push_back(new Platform(nullptr, sf::Vector2f(40000.0f, 100.0f), sf::Vector2f(500.0f, -80.0f)));
-            platforms1.push_back(new Platform(nullptr, sf::Vector2f(40000.0f, 200.0f), sf::Vector2f(500.0f, 610.0f)));
+            platforms1.push_back(new Platform(nullptr, sf::Vector2f(40000.0f, 200.0f), sf::Vector2f(500.0f, 780.0f)));
 
 
 
 
             /* sf::RenderWindow window;*/
-            sf::Vector2i screenDimensions(910, 650);
-            window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "NuchtuMan", sf::Style::Close);
+            sf::Vector2i screenDimensions(1520,720);
+            window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "63010930_GUNSLUG", sf::Style::Close);
 
 
 
@@ -143,29 +140,32 @@ int main()
             music.setVolume(5.0);
             music.play();
 
-            sf::SoundBuffer soundulti, soundJump, soundAttack, soundItem;
+            sf::SoundBuffer soundulti, soundJump, soundAttack, soundItem, soundOk;
             soundulti.loadFromFile("UltimateSound.wav");
             soundJump.loadFromFile("JumpSOUND.wav");
             soundAttack.loadFromFile("attack.ogg");
-            soundItem.loadFromFile("Player/ItemSoundGame.wav");
+            soundItem.loadFromFile("sound/coin.wav");
+            soundOk.loadFromFile("sound/ok.wav");
 
-            sf::Sound sUlti, sJump, sAtk, sItem, sHit;
+            sf::Sound sUlti, sJump, sAtk, sItem, sHit, sOk;
             sItem.setBuffer(soundItem);
             sUlti.setBuffer(soundulti);
             sJump.setBuffer(soundJump);
             sAtk.setBuffer(soundAttack);
+            sOk.setBuffer(soundOk);
             sItem.setVolume(15.0);
             sUlti.setVolume(15.0);
             sJump.setVolume(15.0);
             sAtk.setVolume(15.0);
+            sOk.setVolume(15.0);
 
 
             sf::Texture bTexture;
             sf::Sprite bImage;
 
-            bTexture.loadFromFile("Mappppppppppppppp1.jpg");
+            bTexture.loadFromFile("background/background1.png");
             bImage.setTexture(bTexture);
-            bImage.setScale(1.0f, (float)screenDimensions.y / bTexture.getSize().y);
+            bImage.setScale(3.0f, (float)screenDimensions.y / bTexture.getSize().y);
 
             sf::View view;
             view.reset(sf::FloatRect(0, 0, screenDimensions.x, screenDimensions.y));
@@ -215,7 +215,7 @@ int main()
             sf::Clock clockShoot;
 
             sf::Texture bulletTexture;
-            bulletTexture.loadFromFile("Player/bulletPlayer.png");
+            bulletTexture.loadFromFile("bulletplayer.png");
 
 
 
@@ -223,9 +223,9 @@ int main()
 
             //player
             sf::Texture playerTexture;
-            playerTexture.loadFromFile("Player/playerrock.png");
+            playerTexture.loadFromFile("Player/playersheet.png");
             Player* player;
-            player = new Player(&playerTexture, sf::Vector2u(3, 3), 0.3f, 500.0f, 300.0f);
+            player = new Player(&playerTexture, sf::Vector2u(8, 5), 0.09f, 500.0f, 300.0f);
             /*player->setPosition(15000, 0);*/
             float deltaTime = 0.0f;
             sf::Clock clock;
@@ -235,7 +235,7 @@ int main()
             //enemy
             std::vector<Enemy*> enemy;
             int posx[100];
-            for (int i = 0; i <= 14; i++)
+            for (int i = 0; i <= 20; i++)
             {
 
 
@@ -255,13 +255,13 @@ int main()
             std::vector<Boss*> boss;
             sf::Texture bossTexture;
             bossTexture.loadFromFile("Player/Boss.png");
-            boss.push_back(new Boss(&bossTexture, sf::Vector2u(3, 2), 0.3f, 100.0f, sf::Vector2f(16104, 460.0f)));
+            boss.push_back(new Boss(&bossTexture, sf::Vector2u(3, 2), 0.3f, 100.0f, sf::Vector2f(5600, 620.0f)));
 
 
             //enemyfly
             std::vector<Enemyfly*> enemyfly;
             int posix[100];
-            for (int i = 0; i <= 14; i++)
+            for (int i = 0; i <= 20; i++)
             {
 
 
@@ -275,7 +275,7 @@ int main()
             sf::Texture enemyflyTexture;
             enemyflyTexture.loadFromFile("enemy-spritefly.png");
             for (int i = 0; i <= 14; i++)
-                enemyfly.push_back(new Enemyfly(&enemyflyTexture, sf::Vector2u(4, 1), 0.3f, 200.0f, sf::Vector2f(posix[i], 275.0f)));
+                enemyfly.push_back(new Enemyfly(&enemyflyTexture, sf::Vector2u(4, 1), 0.3f, 350.0f, sf::Vector2f(posix[i], .0f)));
             float dti = 0.0f;
             sf::Clock clock2;
 
@@ -302,10 +302,10 @@ int main()
             sf::Texture itemBossTexture;
             sf::Texture itemEnemyFlyTexture;
             sf::Texture itemEnemyFly2Texture;
-            itemTexture.loadFromFile("Player/Item.png");
-            itemEnemyFlyTexture.loadFromFile("Player/ItemEnemyFly3.png");
-            itemEnemyFly2Texture.loadFromFile("Player/ItemEnemyFly4.png");
-            itemBossTexture.loadFromFile("Player/ItemBoss.png");
+            itemTexture.loadFromFile("item/chicken.png");
+            itemEnemyFlyTexture.loadFromFile("item/coin.png");
+            itemEnemyFly2Texture.loadFromFile("item/coin.png");
+            itemBossTexture.loadFromFile("item/chest.png");
             sf::Clock bonusTime;
 
 
@@ -406,14 +406,14 @@ int main()
                 }
 
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E) && cdShoot.asSeconds() >= 0.2)
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::J) && cdShoot.asSeconds() >= 0.2)
                 {
                     clockShoot.restart();
                     sAtk.play();
                     if (player->getFaceRight() == true)
-                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, 1.0f, 0.0f, sf::Vector2f(1.0f, 1.0f)));
+                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, 2.0f, 0.0f, sf::Vector2f(4.0f, 1.0f)));
                     if (player->getFaceRight() == false)
-                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, -1.0f, 0.0f, sf::Vector2f(1.0f, 1.0f)));
+                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, -2.0f, 0.0f, sf::Vector2f(4.0f, 1.0f)));
                 }
 
 
@@ -580,7 +580,7 @@ int main()
                     {
                         if (r == 1)
                         {
-                            Items.push_back(new item(&itemTexture, i->getPosition().x, i->getPosition().y + 15, sf::Vector2u(2, 1), 0.3f, "NORMAL", sf::Vector2f(40.f, 40.f)));
+                            Items.push_back(new item(&itemTexture, i->getPosition().x, i->getPosition().y + 15, sf::Vector2u(5, 1), 0.3f, "NORMAL", sf::Vector2f(60.f, 60.f)));
                             delete enemy.at(counter);
                         }
 
@@ -623,7 +623,7 @@ int main()
 
                     if (i->getHP() <= 0)
                     {
-                        Items.push_back(new item(&itemBossTexture, i->getPosition().x, i->getPosition().y + 10, sf::Vector2u(3, 1), 0.3f, "BOSS", sf::Vector2f(40.f, 40.f)));
+                        Items.push_back(new item(&itemBossTexture, i->getPosition().x, i->getPosition().y + 10, sf::Vector2u(6, 1), 0.09f, "BOSS", sf::Vector2f(80.f, 80.f)));
                         delete boss.at(counter4);
                         boss.erase(boss.begin() + counter4);
                         counter4--;
@@ -646,11 +646,11 @@ int main()
                             bullet->setPosition(-50.f, -50.f);
                             if (randomTime == 0)
                             {
-                                Items.push_back(new item(&itemEnemyFlyTexture, k->getPosition().x, k->getPosition().y + 10, sf::Vector2u(12, 1), 0.3f, "EnemyFly", sf::Vector2f(60.f, 60.f)));
+                                Items.push_back(new item(&itemEnemyFlyTexture, k->getPosition().x, k->getPosition().y + 10, sf::Vector2u(9, 1), 0.09f, "EnemyFly", sf::Vector2f(50.f, 50.f)));
                             }
                             if (randomTime == 1)
                             {
-                                Items.push_back(new item(&itemEnemyFly2Texture, k->getPosition().x, k->getPosition().y + 10, sf::Vector2u(4, 1), 0.3f, "EnemyFly2", sf::Vector2f(40.f, 40.f)));
+                                Items.push_back(new item(&itemEnemyFly2Texture, k->getPosition().x, k->getPosition().y + 10, sf::Vector2u(9, 1), 0.09f, "EnemyFly2", sf::Vector2f(50.f, 50.f)));
                                 delete enemyfly.at(counter3);
 
                             }
@@ -692,6 +692,7 @@ int main()
                     {
                         if (item->getType() == "NORMAL")
                         {
+                            sOk.play();
                             isBonus = true;
                             bonusTime.restart();
                         }
@@ -707,7 +708,7 @@ int main()
                         }
                         if (item->getType() == "BOSS")
                         {
-                            std::cout << "KUY";
+                            sItem.play();
                             endstate = true;
 
 
@@ -818,10 +819,10 @@ int main()
                 }*/
 
 
-                for (auto* i : platforms)
+                /*for (auto* i : platforms)
                 {
                     i->Draw(window);
-                }
+                }*/
                 window.draw(life1);
                 window.draw(life2);
                 window.draw(life3);
@@ -2259,10 +2260,10 @@ int main()
         }
         else if (page_number == 3)
         {
-            sf::RenderWindow window(sf::VideoMode(910, 650), "SFML", sf::Style::Close);
+            sf::RenderWindow window(sf::VideoMode(1520, 720), "63010930_END", sf::Style::Close);
             RestartMenu RestartMenu(window.getSize().x, window.getSize().y);
             sf::Texture texture;
-            if (!texture.loadFromFile("Background main.jpg"));
+            if (!texture.loadFromFile("background/background main.png"));
             {
                 //handle error
             }

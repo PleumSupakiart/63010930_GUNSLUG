@@ -14,7 +14,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 
 
 
-    body.setSize(sf::Vector2f(60, 60));
+    body.setSize(sf::Vector2f(120,120));
     body.setOrigin(body.getSize() / 2.0f);
     body.setPosition(0.f, 0.f);
     body.setScale(1.0, 1.0);
@@ -70,29 +70,50 @@ void Player::Update(float deltaTime)
     {
         velocity.x -= speed;
 
+        if (velocity.y > 0 || velocity.y < 0)
+        {
+            row = 2;
+        }
+
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        velocity.x += speed;
+        velocity.x += speed*5;
+        if (velocity.y > 0 || velocity.y < 0)
+        {
+            row = 2;
+        }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && canJump)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && canJump)
     {
 
         sJump.play();
-        velocity.y = -sqrt(2.0f * 981.0f * jumpHeight);
+        velocity.y = -sqrt(5.0f * 980.0f * jumpHeight);
         canJump = false;
 
     }
-    velocity.y += 981.0f * deltaTime;
+    velocity.y += 3 * 981.0f * deltaTime;
 
 
     if (velocity.x == 0.0f)
     {
-        row = 0;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::J))
+        {
+            row = 3;
+        }
+
+        else
+        {
+            row = 0;
+        }
     }
     if (velocity.x != 0.0f)
     {
         row = 1;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::J))
+        {
+            row = 4;
+        }
         if (velocity.x > 0.0f)
             faceRight = true;
         else
@@ -103,7 +124,7 @@ void Player::Update(float deltaTime)
         body.setFillColor(sf::Color(255, 255, 255, 255));
 
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
         row = 2;
     }
