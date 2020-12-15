@@ -33,8 +33,6 @@ int main()
 
 
 
-
-
     while (window.isOpen())
     {
 
@@ -79,6 +77,7 @@ int main()
         window.clear();
         window.draw(background);
         menu.draw(window);
+        
         window.display();
     }
 
@@ -2319,8 +2318,14 @@ int main()
             bool close = false;
 
 
-            sf::Font SLUG;
-            SLUG.loadFromFile("font/metalslug.ttf");
+            /*sf::Font font;
+            font.loadFromFile("font/metalslug.ttf");
+            sf::Text name;
+            name.setFont(font);
+            name.setString("63010930");
+            name.setColor(sf::Color::Red);
+            name.setCharacterSize(80);
+            name.setPosition(640,200);*/
 
             
 
@@ -2379,8 +2384,11 @@ int main()
                  }*/
 
                 window.clear();
+               
+               
                 window.draw(background);
                 RestartMenu.draw(window);
+               
                 window.display();
             }
 
