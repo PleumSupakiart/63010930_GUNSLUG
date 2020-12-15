@@ -8,7 +8,7 @@ Enemyfly::Enemyfly(sf::Texture* texture, sf::Vector2u imageCount, float switchTi
     this->row = 0;
     this->faceRight = true;
 
-    body.setSize(sf::Vector2f(60, 60));
+    body.setSize(sf::Vector2f(100, 80));
     body.setOrigin(body.getSize() / 2.0f);
     body.setScale(1.0, 1.0);
     body.setTexture(texture);

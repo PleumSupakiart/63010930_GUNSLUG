@@ -15,9 +15,9 @@ Boss::Boss(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, floa
     row = 0;
     faceRight = true;
 
-    this->hp = 10;
+    this->hp = 50;
 
-    body.setSize(sf::Vector2f(65 * 1.5, 46 * 1.5));
+    body.setSize(sf::Vector2f(65 * 2, 46 * 2));
     body.setOrigin(body.getSize() / 2.0f);
     body.setScale(1.5, 1.5);
     body.setTexture(texture);
@@ -61,7 +61,7 @@ void Boss::Update(float deltaTime, Player* player)
     sf::Time cdShoot1 = clockShoot1.getElapsedTime();
 
     velocity.x *= 0.0f;
-    if (player->getPosition().x + 700 > body.getPosition().x)
+    if (player->getPosition().x + 800 > body.getPosition().x)
     {
         if (r == 0)
         {
@@ -69,7 +69,7 @@ void Boss::Update(float deltaTime, Player* player)
             /*if (faceRight == false)
                 bullets.push_back(new bulletEnemy(&bulletTexture, 20.f, body.getPosition().x, body.getPosition().y, 1.0f, 0.0f));
             if (faceRight == true)*/
-            bullets.push_back(new bulletEnemy(&bulletTexture, 20.f, body.getPosition().x, body.getPosition().y, -1.0f, 0.0f, sf::Vector2f(1.0f, 1.0f)));
+            bullets.push_back(new bulletEnemy(&bulletTexture, 20.f, body.getPosition().x, body.getPosition().y, -1.0f, 0.0f, sf::Vector2f(4.5f, 1.0f)));
             row = 0;
         }
 
@@ -79,9 +79,16 @@ void Boss::Update(float deltaTime, Player* player)
             clockShoot1.restart();
             row = 1;
             sJump.play();
-            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 15194, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 1.0f)));
-            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 15194, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 1.0f)));
-            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 15194, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 1.0f)));
+            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 5500, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 2.0f)));
+            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 5400, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 2.0f)));
+            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 5300, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 2.0f)));
+            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 5200, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 2.0f)));
+            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 5100, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 2.0f)));
+            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 5000, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 2.0f)));
+            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 4900, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 2.0f)));
+            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 4800, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 2.0f)));
+            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 4700, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 2.0f)));
+            bullets.push_back(new bulletEnemy(&thunderTexture, 10.f, rand() % 910 + 4600, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 2.0f)));
         }
 
 
@@ -179,8 +186,8 @@ void Boss::updateBullet()
 
 void Boss::initTexture()
 {
-    this->bulletTexture.loadFromFile("Player/bulletBoss.png");
-    this - thunderTexture.loadFromFile("Player/Thunder.png");
+    this->bulletTexture.loadFromFile("bulletboss1.png");
+    this - thunderTexture.loadFromFile("missile.png");
 }
 
 

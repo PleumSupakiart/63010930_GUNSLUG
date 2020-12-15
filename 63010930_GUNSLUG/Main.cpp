@@ -75,6 +75,7 @@ int main()
             }
         }
 
+     
         window.clear();
         window.draw(background);
         menu.draw(window);
@@ -173,7 +174,7 @@ int main()
 
             sf::Vector2f position(screenDimensions.x / 2, screenDimensions.y / 2);
 
-            sf::CircleShape life1;
+            /*sf::CircleShape life1;
             life1.setRadius(20.0f);
             sf::Texture Life1Texture;
             Life1Texture.loadFromFile("life.png");
@@ -193,7 +194,7 @@ int main()
             sf::Texture Life3Texture;
             Life3Texture.loadFromFile("life.png");
             life3.setTexture(&Life3Texture);
-            life3.setPosition(750, 10);
+            life3.setPosition(750, 10);*/
 
 
             //ultimate
@@ -215,7 +216,7 @@ int main()
             sf::Clock clockShoot;
 
             sf::Texture bulletTexture;
-            bulletTexture.loadFromFile("bulletplayer.png");
+            bulletTexture.loadFromFile("bulletred.png");
 
 
 
@@ -245,23 +246,23 @@ int main()
 
 
             sf::Texture enemyTexture;
-            enemyTexture.loadFromFile("Enemy-Sprite.png");
+            enemyTexture.loadFromFile("enemy/enemy-soider.png");
             for (int i = 0; i <= 14; i++)
-                enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(3, 2), 0.3f, 100.0f, sf::Vector2f(posx[i], 480.0f), sf::Vector2f(1.0f, 1.0f)));
+                enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(12, 2), 0.12f, 200.0f, sf::Vector2f(posx[i], 480.0f), sf::Vector2f(1.0f, 1.0f)));
             float dt = 0.0f;
             sf::Clock clock1;
 
             //boss
             std::vector<Boss*> boss;
             sf::Texture bossTexture;
-            bossTexture.loadFromFile("Player/Boss.png");
-            boss.push_back(new Boss(&bossTexture, sf::Vector2u(3, 2), 0.3f, 100.0f, sf::Vector2f(5600, 620.0f)));
+            bossTexture.loadFromFile("boss/boss1.png");
+            boss.push_back(new Boss(&bossTexture, sf::Vector2u(5, 2), 0.2f, 100.0f, sf::Vector2f(5500, 620.0f)));
 
 
             //enemyfly
             std::vector<Enemyfly*> enemyfly;
             int posix[100];
-            for (int i = 0; i <= 20; i++)
+            for (int i = 0; i <= 15; i++)
             {
 
 
@@ -273,9 +274,9 @@ int main()
 
 
             sf::Texture enemyflyTexture;
-            enemyflyTexture.loadFromFile("enemy-spritefly.png");
+            enemyflyTexture.loadFromFile("enemy/ufo.png");
             for (int i = 0; i <= 14; i++)
-                enemyfly.push_back(new Enemyfly(&enemyflyTexture, sf::Vector2u(4, 1), 0.3f, 350.0f, sf::Vector2f(posix[i], .0f)));
+                enemyfly.push_back(new Enemyfly(&enemyflyTexture, sf::Vector2u(8, 2), 0.3f, 350.0f, sf::Vector2f(posix[i], .0f)));
             float dti = 0.0f;
             sf::Clock clock2;
 
@@ -293,7 +294,7 @@ int main()
 
             //bulletEnemy
             sf::Texture bulletEnemyTexture;
-            bulletEnemyTexture.loadFromFile("Player/bulletEnemystate1.png");
+            bulletEnemyTexture.loadFromFile("bulletenemy1.png");
 
 
             //Item 
@@ -304,7 +305,7 @@ int main()
             sf::Texture itemEnemyFly2Texture;
             itemTexture.loadFromFile("item/chicken.png");
             itemEnemyFlyTexture.loadFromFile("item/coin.png");
-            itemEnemyFly2Texture.loadFromFile("item/coin.png");
+            itemEnemyFly2Texture.loadFromFile("item/firstaid.png");
             itemBossTexture.loadFromFile("item/chest.png");
             sf::Clock bonusTime;
 
@@ -314,36 +315,50 @@ int main()
 
             //Hptext
 
-            sf::Font ARLRDBD;
-            ARLRDBD.loadFromFile("8-BIT WONDER.TTF");
+            sf::Font SLUG;
+            SLUG.loadFromFile("font/metalslug.ttf");
 
 
             sf::Text lblHPnum;
-            lblHPnum.setCharacterSize(20);
+            lblHPnum.setCharacterSize(40);
             lblHPnum.setPosition({ 10 ,10 });
-            lblHPnum.setFont(ARLRDBD);
-            lblHPnum.setString("HP|");
+            lblHPnum.setFont(SLUG);
+            lblHPnum.setString("HP");
+            lblHPnum.setFillColor(sf::Color::Red);
+            lblHPnum.setOutlineColor(sf::Color::Yellow);
+            lblHPnum.setOutlineThickness(3);
+
 
 
             sf::Text lblHP;
-            lblHP.setCharacterSize(20);
+            lblHP.setCharacterSize(40);
             lblHP.setPosition({ 70 ,10 });
-            lblHP.setFont(ARLRDBD);
-
+            lblHP.setFont(SLUG);
             lblHP.setString(std::to_string(player->getHP()));
+            lblHP.setFillColor(sf::Color::Red);
+            lblHP.setOutlineColor(sf::Color::Yellow);
+            lblHP.setOutlineThickness(3);
+
 
             //killtext
             sf::Text lblKillnum;
-            lblKillnum.setCharacterSize(20);
+            lblKillnum.setCharacterSize(40);
             lblKillnum.setPosition({ 750 ,60 });
-            lblKillnum.setFont(ARLRDBD);
-            lblKillnum.setString("Score|");
+            lblKillnum.setFont(SLUG);
+            lblKillnum.setString("Score");
+            lblKillnum.setFillColor(sf::Color::Cyan);
+            lblKillnum.setOutlineColor(sf::Color::White);
+            lblKillnum.setOutlineThickness(3);
+
 
             sf::Text lblKill;
-            lblKill.setCharacterSize(20);
+            lblKill.setCharacterSize(40);
             lblKill.setPosition({ 870 ,60 });
-            lblKill.setFont(ARLRDBD);
+            lblKill.setFont(SLUG);
             lblKill.setString(std::to_string(KILL));
+            lblKill.setFillColor(sf::Color::Cyan);
+            lblKill.setOutlineColor(sf::Color::White);
+            lblKill.setOutlineThickness(3);
 
 
             int  hpEnemy = 2;
@@ -411,9 +426,9 @@ int main()
                     clockShoot.restart();
                     sAtk.play();
                     if (player->getFaceRight() == true)
-                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, 2.0f, 0.0f, sf::Vector2f(4.0f, 1.0f)));
+                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, 2.0f, 0.0f, sf::Vector2f(4.5f, 1.0f)));
                     if (player->getFaceRight() == false)
-                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, -2.0f, 0.0f, sf::Vector2f(4.0f, 1.0f)));
+                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, -2.0f, 0.0f, sf::Vector2f(4.5f, 1.0f)));
                 }
 
 
@@ -580,7 +595,7 @@ int main()
                     {
                         if (r == 1)
                         {
-                            Items.push_back(new item(&itemTexture, i->getPosition().x, i->getPosition().y + 15, sf::Vector2u(5, 1), 0.3f, "NORMAL", sf::Vector2f(60.f, 60.f)));
+                            Items.push_back(new item(&itemTexture, i->getPosition().x, i->getPosition().y + 15, sf::Vector2u(5, 1), 0.3f, "NORMAL", sf::Vector2f(75.f, 75.f)));
                             delete enemy.at(counter);
                         }
 
@@ -650,7 +665,7 @@ int main()
                             }
                             if (randomTime == 1)
                             {
-                                Items.push_back(new item(&itemEnemyFly2Texture, k->getPosition().x, k->getPosition().y + 10, sf::Vector2u(9, 1), 0.09f, "EnemyFly2", sf::Vector2f(50.f, 50.f)));
+                                Items.push_back(new item(&itemEnemyFly2Texture, k->getPosition().x, k->getPosition().y + 10, sf::Vector2u(17, 1), 0.09f, "EnemyFly2", sf::Vector2f(75.f, 75.f)));
                                 delete enemyfly.at(counter3);
 
                             }
@@ -693,6 +708,8 @@ int main()
                         if (item->getType() == "NORMAL")
                         {
                             sOk.play();
+                            KILL += 5;
+                            player->decreaseHP(-5);
                             isBonus = true;
                             bonusTime.restart();
                         }
@@ -704,7 +721,7 @@ int main()
                         if (item->getType() == "EnemyFly2")
                         {
                             sItem.play();
-                            player->decreaseHP(-5);
+                            player->decreaseHP(-10);
                         }
                         if (item->getType() == "BOSS")
                         {
@@ -735,12 +752,12 @@ int main()
 
 
 
-                if (player->getPosition().x > window.getSize().x / 2.f - 300 && player->getPosition().x < 16002 - window.getSize().x / 2.f)
+                if (player->getPosition().x > window.getSize().x / 2.f - 300 && player->getPosition().x < 5500 - window.getSize().x / 2.f)
                     view.setCenter(player->getPosition().x + 300, window.getSize().y / 2.f);
 
 
                 //life move
-                if (player->getPosition().x + 300 > screenDimensions.x / 2)
+                /*if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x + 695;
                     //life1.setPosition(position.x, 10);
@@ -759,33 +776,33 @@ int main()
                     position.x = player->getPosition().x + 595;
                     //life3.setPosition(position.x, 10);
                     life3.setPosition(view.getCenter().x - 300 + 595, 10);
-                }
+                }*/
 
                 //Hp move
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x - 90;
                     //lblHP.setPosition(position.x, 10);
-                    lblHP.setPosition(view.getCenter().x - 300 - 90, 10);
+                    lblHP.setPosition(view.getCenter().x - 500 - 90, 10);
                 }
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x - 150;
                     //lblHPnum.setPosition(position.x, 10);
-                    lblHPnum.setPosition(view.getCenter().x - 300 - 150, 10);
+                    lblHPnum.setPosition(view.getCenter().x - 500 - 150, 10);
                 }
                 //Kill Move
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x + 695;
                     //lblKill.setPosition(position.x, 60);
-                    lblKill.setPosition(view.getCenter().x - 300 + 695, 60);
+                    lblKill.setPosition(view.getCenter().x - 100 + 695, 10);
                 }
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x + 605;
                     //lblKillnum.setPosition(position.x, 60);
-                    lblKillnum.setPosition(view.getCenter().x - 300 + 575, 60);
+                    lblKillnum.setPosition(view.getCenter().x - 100 + 575, 10);
                 }
                 //cdUlti move
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
@@ -823,9 +840,9 @@ int main()
                 {
                     i->Draw(window);
                 }*/
-                window.draw(life1);
+               /* window.draw(life1);
                 window.draw(life2);
-                window.draw(life3);
+                window.draw(life3);*/
                 window.draw(lblHPnum);
                 window.draw(lblHP);
                 window.draw(lblKill);
@@ -854,6 +871,7 @@ int main()
                     k->Draw(window);
                 }
 
+             
                 window.setView(window.getDefaultView());
                 window.display();
 
@@ -898,9 +916,9 @@ int main()
 
 
             //ground&ceiling
-            platforms1.push_back(new Platform(nullptr, sf::Vector2f(40000.0f, 100.0f), sf::Vector2f(500.0f, -80.0f)));
-            platforms1.push_back(new Platform(nullptr, sf::Vector2f(40000.0f, 39 * 3.0f), sf::Vector2f(258 * 3.0f, 195 * 3.0f)));
-            platforms1.push_back(new Platform(nullptr, sf::Vector2f(65 * 3.0f, 39 * 3.0f), sf::Vector2f(455.5 * 3.0f, 162 * 3.0f)));
+            platforms1.push_back(new Platform(nullptr, sf::Vector2f(40000.0f, 3.0f), sf::Vector2f(500.0f, 645.0f)));
+           // platforms1.push_back(new Platform(nullptr, sf::Vector2f(40000.0f, 39 * 3.0f), sf::Vector2f(258 * 3.0f, 195 * 3.0f)));
+            /*platforms1.push_back(new Platform(nullptr, sf::Vector2f(65 * 3.0f, 39 * 3.0f), sf::Vector2f(455.5 * 3.0f, 162 * 3.0f)));
             platforms1.push_back(new Platform(nullptr, sf::Vector2f(128 * 3.0f, 39 * 3.0f), sf::Vector2f(552 * 3.0f, 128 * 3.0f)));
             platforms1.push_back(new Platform(nullptr, sf::Vector2f(129 * 3.0f, 39 * 3.0f), sf::Vector2f(680.5 * 3.0f, 94.5 * 3.0f)));
             platforms1.push_back(new Platform(nullptr, sf::Vector2f(97 * 3.0f, 39 * 3.0f), sf::Vector2f(792.8 * 3.0f, 60 * 3.0f)));
@@ -929,12 +947,12 @@ int main()
             platforms1.push_back(new Platform(nullptr, sf::Vector2f(129 * 3.0f, 39 * 3.0f), sf::Vector2f(4935.5 * 3.0f, 94.5 * 3.0f)));
             platforms1.push_back(new Platform(nullptr, sf::Vector2f(128 * 3.0f, 39 * 3.0f), sf::Vector2f(5063.5 * 3.0f, 128 * 3.0f)));
             platforms1.push_back(new Platform(nullptr, sf::Vector2f(65 * 3.0f, 39 * 3.0f), sf::Vector2f(5159.5 * 3.0f, 162 * 3.0f)));
+            */
 
 
 
 
-
-            sf::Vector2i screenDimensions(910, 650);
+            sf::Vector2i screenDimensions(1520, 720);
             sf::RenderWindow window;
             window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "63010930_Stage2", sf::Style::Close);
 
@@ -947,28 +965,36 @@ int main()
             music.setVolume(5.0);
             music.play();
 
-            sf::SoundBuffer soundulti, soundJump, soundAttack, soundItem;
+            sf::SoundBuffer soundulti, soundJump, soundAttack, soundItem, soundOk, soundCoin ;
             soundulti.loadFromFile("UltimateSound.wav");
             soundJump.loadFromFile("JumpSOUND.wav");
             soundAttack.loadFromFile("attack.ogg");
-            soundItem.loadFromFile("Player/ItemSoundGame.wav");
+            soundItem.loadFromFile("sound/heavy machine gun.wav");
+            soundOk.loadFromFile("sound/ok.wav");
+            soundCoin.loadFromFile("sound/coin.wav");
 
-            sf::Sound sUlti, sJump, sAtk, sItem, sHit;
+            
+
+            sf::Sound sUlti, sJump, sAtk, sItem, sHit, sOk ,sCoin ;
             sItem.setBuffer(soundItem);
             sUlti.setBuffer(soundulti);
             sJump.setBuffer(soundJump);
             sAtk.setBuffer(soundAttack);
+            sOk.setBuffer(soundOk);
+            sCoin.setBuffer(soundCoin);
+            sCoin.setVolume(15.0);
             sItem.setVolume(15.0);
             sUlti.setVolume(15.0);
             sJump.setVolume(15.0);
             sAtk.setVolume(15.0);
+            sOk.setVolume(15.0);
 
 
 
             sf::Texture bTexture;
             sf::Sprite bImage;
 
-            bTexture.loadFromFile("Player/backgoundState2.png");
+            bTexture.loadFromFile("background/background2.png");
             bImage.setTexture(bTexture);
             bImage.setScale(3.0f, (float)screenDimensions.y / bTexture.getSize().y);
 
@@ -978,7 +1004,7 @@ int main()
 
             sf::Vector2f position(screenDimensions.x / 2, screenDimensions.y / 2);
 
-            sf::CircleShape life1;
+            /*sf::CircleShape life1;
             life1.setRadius(20.0f);
             sf::Texture Life1Texture;
             Life1Texture.loadFromFile("life.png");
@@ -998,11 +1024,11 @@ int main()
             sf::Texture Life3Texture;
             Life3Texture.loadFromFile("life.png");
             life3.setTexture(&Life3Texture);
-            life3.setPosition(750, 10);
+            life3.setPosition(750, 10);*/
 
 
             //ultimate
-            int ultivalue[10] = {};
+            /*int ultivalue[10] = {};
             sf::Clock clockUlti;
             sf::CircleShape ultimate[10];
             sf::Texture ultimateTexture;
@@ -1014,13 +1040,13 @@ int main()
                 ultimate[k].setPosition(10000000.0f, 100000000000.0f);
             }
             int indexUlti = 0;
-
+            */
 
             //bulletTexture
             sf::Clock clockShoot;
 
             sf::Texture bulletTexture;
-            bulletTexture.loadFromFile("Player/bulletPlayer.png");
+            bulletTexture.loadFromFile("bulletblue.png");
 
 
 
@@ -1028,9 +1054,9 @@ int main()
 
             //player
             sf::Texture playerTexture;
-            playerTexture.loadFromFile("Player/playerrock.png");
+            playerTexture.loadFromFile("Player/playersheet.png");
             Player* player;
-            player = new Player(&playerTexture, sf::Vector2u(3, 3), 0.3f, 500.0f, 300.0f);
+            player = new Player(&playerTexture, sf::Vector2u(8, 5), 0.3f, 500.0f, 300.0f);
             /* player->setPosition(15000, 0);*/
             float deltaTime = 0.0f;
             sf::Clock clock;
@@ -1043,32 +1069,32 @@ int main()
 
 
             sf::Texture enemyTexture;
-            enemyTexture.loadFromFile("Player/IcemanEnemy.png");
+            enemyTexture.loadFromFile("enemy/enemy2.png");
 
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(550.0f, 496.0f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(1521.0f, 295.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(2733.f, 187.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(3863.f, 295.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(4875.f, 496.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(5375.f, 496.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(6700.f, 496.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(7346.f, 295.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(8470.f, 187.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(9864.f, 397.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(12000.f, 496.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(10500.f, 496.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(11319.f, 496.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(12957.f, 295.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(13880.f, 187.f), sf::Vector2f(0.7f, 0.7f)));
-            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(2, 2), 0.3f, 100.0f, sf::Vector2f(15073.f, 295.f), sf::Vector2f(0.7f, 0.7f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(550.0f, 496.0f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(1521.0f, 295.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(2733.f, 187.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(3863.f, 295.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(4875.f, 496.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(5375.f, 496.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(6700.f, 496.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(7346.f, 295.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(8470.f, 187.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(9864.f, 397.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(12000.f, 496.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(10500.f, 496.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(11319.f, 496.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(12957.f, 295.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(13880.f, 187.f), sf::Vector2f(1.0f, 1.0f)));
+            enemy.push_back(new Enemy(&enemyTexture, sf::Vector2u(10, 2), 0.1f, 100.0f, sf::Vector2f(15073.f, 295.f), sf::Vector2f(1.0f, 1.0f)));
             float dt = 0.0f;
             sf::Clock clock1;
 
             //boss
             std::vector<bossState2*> boss;
             sf::Texture bossTexture;
-            bossTexture.loadFromFile("Player/bossState2.png");
-            boss.push_back(new bossState2(&bossTexture, sf::Vector2u(3, 1), 1.0f, 100.0f, sf::Vector2f(16104, 460.0f)));
+            bossTexture.loadFromFile("boss/boss2.png");
+            boss.push_back(new bossState2(&bossTexture, sf::Vector2u(7, 1), 1.0f, 100.0f, sf::Vector2f(6760, 350.0f)));
 
 
             //enemyfly
@@ -1086,9 +1112,9 @@ int main()
 
 
             sf::Texture enemyflyTexture;
-            enemyflyTexture.loadFromFile("enemy-spritefly.png");
+            enemyflyTexture.loadFromFile("enemy/ufo2.png");
             for (int i = 0; i <= 14; i++)
-                enemyfly.push_back(new Enemyfly(&enemyflyTexture, sf::Vector2u(4, 1), 0.3f, 200.0f, sf::Vector2f(posix[i], 175.0f)));
+                enemyfly.push_back(new Enemyfly(&enemyflyTexture, sf::Vector2u(6, 2), 0.3f, 200.0f, sf::Vector2f(posix[i], 175.0f)));
             float dti = 0.0f;
             sf::Clock clock2;
 
@@ -1106,7 +1132,7 @@ int main()
 
             //bulletEnemy
             sf::Texture bulletEnemyTexture;
-            bulletEnemyTexture.loadFromFile("Player/bulletIceman.png");
+            bulletEnemyTexture.loadFromFile("bulletenemy2.png");
 
 
             //Item 
@@ -1116,10 +1142,10 @@ int main()
             sf::Texture itemEnemyFlyTexture;
             sf::Texture itemEnemyFly2Texture;
 
-            itemEnemyFlyTexture.loadFromFile("Player/ItemEnemyFly3.png");
-            itemEnemyFly2Texture.loadFromFile("Player/ItemEnemyFly4.png");
-            itemTexture.loadFromFile("Player/Item.png");
-            itemBossTexture.loadFromFile("Player/ItemBossState2.png");
+            itemEnemyFlyTexture.loadFromFile("item/heavymachine.png");
+            itemEnemyFly2Texture.loadFromFile("item/firstaid.png");
+            itemTexture.loadFromFile("item/chicken.png");
+            itemBossTexture.loadFromFile("item/chest.png");
             sf::Clock bonusTime;
 
 
@@ -1128,42 +1154,51 @@ int main()
 
             //Hptext
 
-            sf::Font ARLRDBD;
-            ARLRDBD.loadFromFile("8-BIT WONDER.TTF");
-
+            sf::Font SLUG;
+            SLUG.loadFromFile("font/metalslug.ttf");
 
             sf::Text lblHPnum;
-            lblHPnum.setCharacterSize(20);
+            lblHPnum.setCharacterSize(40);
             lblHPnum.setPosition({ 10 ,10 });
-            lblHPnum.setFont(ARLRDBD);
-            lblHPnum.setString("HP|");
-            lblHPnum.setFillColor(sf::Color::Black);
+            lblHPnum.setFont(SLUG);
+            lblHPnum.setString("HP");
+            lblHPnum.setFillColor(sf::Color::Red);
+            lblHPnum.setOutlineColor(sf::Color::Yellow);
+            lblHPnum.setOutlineThickness(3);
+
+
 
             sf::Text lblHP;
-            lblHP.setCharacterSize(20);
+            lblHP.setCharacterSize(40);
             lblHP.setPosition({ 70 ,10 });
-            lblHP.setFont(ARLRDBD);
-
+            lblHP.setFont(SLUG);
             lblHP.setString(std::to_string(player->getHP()));
-            lblHP.setFillColor(sf::Color::Black);
+            lblHP.setFillColor(sf::Color::Red);
+            lblHP.setOutlineColor(sf::Color::Yellow);
+            lblHP.setOutlineThickness(3);
 
             //killtext
             sf::Text lblKillnum;
-            lblKillnum.setCharacterSize(20);
+            lblKillnum.setCharacterSize(40);
             lblKillnum.setPosition({ 750 ,60 });
-            lblKillnum.setFont(ARLRDBD);
-            lblKillnum.setString("Score|");
-            lblKillnum.setFillColor(sf::Color::Black);
+            lblKillnum.setFont(SLUG);
+            lblKillnum.setString("Score");
+            lblKillnum.setFillColor(sf::Color::Cyan);
+            lblKillnum.setOutlineColor(sf::Color::White);
+            lblKillnum.setOutlineThickness(3);
+
 
             sf::Text lblKill;
-            lblKill.setCharacterSize(20);
+            lblKill.setCharacterSize(40);
             lblKill.setPosition({ 870 ,60 });
-            lblKill.setFont(ARLRDBD);
+            lblKill.setFont(SLUG);
             lblKill.setString(std::to_string(KILL));
-            lblKill.setFillColor(sf::Color::Black);
+            lblKill.setFillColor(sf::Color::Cyan);
+            lblKill.setOutlineColor(sf::Color::White);
+            lblKill.setOutlineThickness(3);
 
             bool endstate2 = false;
-            int  hpEnemy = 2;
+            int  hpEnemy = 20;
             //const float gravitySpeed = 10;*/
             while (window.isOpen())
             {
@@ -1196,14 +1231,14 @@ int main()
                 //sf::Time cdEnemySpawn = cdEnemy.getElapsedTime();*/
 
                 sf::Time cdShoot = clockShoot.getElapsedTime();
-                sf::Time cdUlti = clockUlti.getElapsedTime();
+               // sf::Time cdUlti = clockUlti.getElapsedTime();
                 sf::Time cdCdUltiValue = clockCdUltiValue.getElapsedTime();
                 const float movespeed = 8;
 
 
 
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q) && indexUlti < 10 && ultivalue[indexUlti] == 0 && cdUltiValue == 1)
+               /* if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q) && indexUlti < 10 && ultivalue[indexUlti] == 0 && cdUltiValue == 1)
                 {
 
                     ultimate[indexUlti].setPosition(player->getPosition().x + 40, player->getPosition().y - 80);
@@ -1219,17 +1254,17 @@ int main()
                 {
                     clockCdUltiValue.restart();
                     cdUltiValue = 1;
-                }
+                }*/
 
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E) && cdShoot.asSeconds() >= 0.2)
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::J) && cdShoot.asSeconds() >= 0.2)
                 {
                     clockShoot.restart();
                     sAtk.play();
                     if (player->getFaceRight() == true)
-                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, 1.0f, 0.0f, sf::Vector2f(1.0f, 1.0f)));
+                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, 2.0f, 0.0f, sf::Vector2f(4.5f, 1.0f)));
                     if (player->getFaceRight() == false)
-                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, -1.0f, 0.0f, sf::Vector2f(1.0f, 1.0f)));
+                        bulletPlayer.push_back(new bulletEnemy(&bulletTexture, 20.f, player->getPosition().x, player->getPosition().y, -2.0f, 0.0f, sf::Vector2f(4.5f, 1.0f)));
                 }
 
 
@@ -1252,7 +1287,7 @@ int main()
 
                 //bullet&Ultimate
 
-                for (int l = 0; l <= 9; l++)
+               /* for (int l = 0; l <= 9; l++)
                 {
                     ultimate[l].move(20.0f, 0.0f);
                     if (ultivalue[l] == 1)
@@ -1260,7 +1295,7 @@ int main()
 
                         ultivalue[l] = 0;
                     }
-                }
+                }*/
 
 
 
@@ -1378,11 +1413,11 @@ int main()
 
                             if (randomTime == 0)
                             {
-                                Items.push_back(new item(&itemEnemyFlyTexture, k->getPosition().x, k->getPosition().y + 10, sf::Vector2u(12, 1), 0.3f, "EnemyFly", sf::Vector2f(60.f, 60.f)));
+                                Items.push_back(new item(&itemEnemyFlyTexture, k->getPosition().x, k->getPosition().y + 10, sf::Vector2u(4, 1), 0.3f, "EnemyFly", sf::Vector2f(50.f, 50.f)));
                             }
                             if (randomTime == 1)
                             {
-                                Items.push_back(new item(&itemEnemyFly2Texture, k->getPosition().x, k->getPosition().y + 10, sf::Vector2u(4, 1), 0.3f, "EnemyFly2", sf::Vector2f(40.f, 40.f)));
+                                Items.push_back(new item(&itemEnemyFly2Texture, k->getPosition().x, k->getPosition().y + 10, sf::Vector2u(17, 1), 0.3f, "EnemyFly2", sf::Vector2f(75.f, 75.f)));
                                 /*delete enemyfly.at(counter8);*/
 
                             }
@@ -1474,7 +1509,7 @@ int main()
                     {
                         if (r == 1)
                         {
-                            Items.push_back(new item(&itemTexture, i->getPosition().x, i->getPosition().y + 10, sf::Vector2u(2, 1), 0.3f, "NORMAL", sf::Vector2f(40.f, 40.f)));
+                            Items.push_back(new item(&itemTexture, i->getPosition().x, i->getPosition().y + 10, sf::Vector2u(5, 1), 0.3f, "NORMAL", sf::Vector2f(75.f, 75.f)));
                             delete enemy.at(counter);
                         }
 
@@ -1517,7 +1552,7 @@ int main()
 
                     if (i->getHP() <= 0)
                     {
-                        Items.push_back(new item(&itemBossTexture, i->getPosition().x, i->getPosition().y + 10, sf::Vector2u(2, 1), 0.3f, "BOSS", sf::Vector2f(40.f, 40.f)));
+                        Items.push_back(new item(&itemBossTexture, i->getPosition().x, i->getPosition().y + 10, sf::Vector2u(6, 1), 0.3f, "BOSS", sf::Vector2f(80.f, 80.f)));
                         delete boss.at(counter4);
                         boss.erase(boss.begin() + counter4);
                         counter4--;
@@ -1534,18 +1569,20 @@ int main()
                     {
                         if (item->getType() == "NORMAL")
                         {
+                            sOk.play();
                             isBonus = true;
+                            KILL += 5;
                             bonusTime.restart();
                         }
                         if (item->getType() == "EnemyFly")
                         {
                             sItem.play();
-                            KILL += 10;
+                            KILL += 15;
                         }
                         if (item->getType() == "EnemyFly2")
                         {
-                            sItem.play();
-                            player->decreaseHP(-5);
+                            sCoin.play();
+                            player->decreaseHP(-2);
                         }
                         else if (item->getType() == "BOSS")
                         {
@@ -1568,57 +1605,57 @@ int main()
 
 
 
-                if (player->getPosition().x > window.getSize().x / 2.f - 300 && player->getPosition().x < 16002 - window.getSize().x / 2.f)
+                if (player->getPosition().x > window.getSize().x / 2.f - 300 && player->getPosition().x < 6600 - window.getSize().x / 2.f)
                     view.setCenter(player->getPosition().x + 300, window.getSize().y / 2.f);
 
 
                 //life move
-                if (player->getPosition().x + 300 > screenDimensions.x / 2)
+               /* if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x + 695;
                     //life1.setPosition(position.x, 10);
-                    life1.setPosition(view.getCenter().x - 300 + 695, 10);
+                   // life1.setPosition(view.getCenter().x - 300 + 695, 10);
                 }
 
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x + 645;
                     //life2.setPosition(position.x, 10);
-                    life2.setPosition(view.getCenter().x - 300 + 645, 10);
+                    //life2.setPosition(view.getCenter().x - 300 + 645, 10);
                 }
 
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x + 595;
                     //life3.setPosition(position.x, 10);
-                    life3.setPosition(view.getCenter().x - 300 + 595, 10);
-                }
+                   // life3.setPosition(view.getCenter().x - 300 + 595, 10);
+                }*/
 
                 //Hp move
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x - 90;
                     //lblHP.setPosition(position.x, 10);
-                    lblHP.setPosition(view.getCenter().x - 300 - 90, 10);
+                    lblHP.setPosition(view.getCenter().x - 500 - 90, 10);
                 }
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x - 150;
                     //lblHPnum.setPosition(position.x, 10);
-                    lblHPnum.setPosition(view.getCenter().x - 300 - 150, 10);
+                    lblHPnum.setPosition(view.getCenter().x - 500 - 150, 10);
                 }
                 //Kill Move
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x + 695;
                     //lblKill.setPosition(position.x, 60);
-                    lblKill.setPosition(view.getCenter().x - 300 + 695, 60);
+                    lblKill.setPosition(view.getCenter().x - 100 + 695, 10);
                 }
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
                 {
                     position.x = player->getPosition().x + 605;
                     //lblKillnum.setPosition(position.x, 60);
-                    lblKillnum.setPosition(view.getCenter().x - 300 + 575, 60);
+                    lblKillnum.setPosition(view.getCenter().x - 100 + 575, 10);
                 }
                 //cdUlti move
                 if (player->getPosition().x + 300 > screenDimensions.x / 2)
@@ -1639,11 +1676,13 @@ int main()
 
 
 
-                for (auto* j : platforms1)
+                window.draw(bImage);
+
+                /*for (auto* j : platforms1)
                 {
                     j->Draw(window);
-                }
-                window.draw(bImage);
+                }*/
+                
 
 
                 /* if (cdUltiValue == 1)
@@ -1652,13 +1691,13 @@ int main()
                 }*/
 
 
-                /*for (auto* i : platforms)
+                for (auto* i : platforms)
                 {
                     i->Draw(window);
-                }*/
-                window.draw(life1);
+                }
+                /*window.draw(life1);
                 window.draw(life2);
-                window.draw(life3);
+                window.draw(life3);*/
                 window.draw(lblHPnum);
                 window.draw(lblHP);
                 window.draw(lblKill);
@@ -1673,10 +1712,10 @@ int main()
 
                 for (auto* bullet : bulletPlayer)
                     bullet->Render(window);
-                for (int k = 0; k <= 9; k++)
+                /*for (int k = 0; k <= 9; k++)
                 {
                     window.draw(ultimate[k]);
-                }
+                }*/
                 for (auto* i : enemy)
                 {
                     i->Draw(window);
@@ -2334,9 +2373,10 @@ int main()
 
 
         }
+       
     }
 
 
-
+    
     return 0;
 }

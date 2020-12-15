@@ -9,7 +9,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
     this->canJump = false;
     this->row = 0;
     this->faceRight = true;
-    this->HP = 100;
+    this->HP = 1000000;
 
 
 

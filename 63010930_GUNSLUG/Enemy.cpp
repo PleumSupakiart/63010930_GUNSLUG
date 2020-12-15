@@ -13,11 +13,11 @@ Enemy::Enemy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, fl
     row = 0;
     faceRight = true;
     this->speedBullet = 20.f;
-    this->hp = 3;
+    this->hp = 8;
     this->isDead = false;
     this->red = false;
     this->blue = false;
-    body.setSize(sf::Vector2f(80, 80));
+    body.setSize(sf::Vector2f(110, 110));
     body.setOrigin(body.getSize() / 2.0f);
     body.setScale(scale);
     body.setTexture(texture);
@@ -93,9 +93,9 @@ void Enemy::Update(float deltaTime, Player* player, sf::Texture* bullTexture)
         {
             clockShoot.restart();
             if (faceRight == false)
-                bullets.push_back(new bulletEnemy(bullTexture, this->speedBullet, body.getPosition().x, body.getPosition().y, 1.0f, 0.0f, sf::Vector2f(1.0f, 1.0f)));
+                bullets.push_back(new bulletEnemy(bullTexture, this->speedBullet, body.getPosition().x, body.getPosition().y, 1.0f, 0.0f, sf::Vector2f(1.f, 1.0f)));
             if (faceRight == true)
-                bullets.push_back(new bulletEnemy(bullTexture, this->speedBullet, body.getPosition().x, body.getPosition().y, -1.0f, 0.0f, sf::Vector2f(1.0f, 1.0f)));
+                bullets.push_back(new bulletEnemy(bullTexture, this->speedBullet, body.getPosition().x, body.getPosition().y, -1.0f, 0.0f, sf::Vector2f(1.f, 1.0f)));
             row = 1;
             sShoot.play();
         }
@@ -193,5 +193,5 @@ void Enemy::updateBullet()
 
 void Enemy::initTexture()
 {
-    this->bulletTexture.loadFromFile("bullet.png");
+    this->bulletTexture.loadFromFile("bulletenemy.png");
 }

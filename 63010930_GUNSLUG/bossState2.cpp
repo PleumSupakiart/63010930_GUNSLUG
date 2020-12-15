@@ -14,9 +14,9 @@ bossState2::bossState2(sf::Texture* texture, sf::Vector2u imageCount, float swit
     row = 0;
     faceRight = true;
 
-    this->hp = 10;
+    this->hp = 50;
 
-    body.setSize(sf::Vector2f(65 * 1.5, 46 * 1.5));
+    body.setSize(sf::Vector2f(120, 300));
     body.setOrigin(body.getSize() / 2.0f);
     body.setScale(1.5, 1.5);
     body.setTexture(texture);
@@ -60,7 +60,7 @@ void bossState2::Update(float deltaTime, Player* player)
     sf::Time cdShoot1 = clockShoot1.getElapsedTime();
 
     velocity.x *= 0.0f;
-    if (player->getPosition().x + 700 > body.getPosition().x)
+    if (player->getPosition().x + 900 > body.getPosition().x)
     {
         if (r == 0 && clockShoot.getElapsedTime().asSeconds() > 0.5)
         {
@@ -73,9 +73,9 @@ void bossState2::Update(float deltaTime, Player* player)
                 counter--;
             }
 
-            bullet.push_back(new bulletEnemy(&bulletTexture, 10.f, rand() % 910 + 15194, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 1.0f)));
-            bullet.push_back(new bulletEnemy(&bulletTexture, 10.f, rand() % 910 + 15194, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 1.0f)));
-            bullet.push_back(new bulletEnemy(&bulletTexture, 10.f, rand() % 910 + 15194, 0, 0.0f, 1.0f, sf::Vector2f(1.0f, 1.0f)));
+            bullet.push_back(new bulletEnemy(&bulletTexture, 10.f, rand() % 910 + 6100, 0, 0.0f, 1.0f, sf::Vector2f(1.5f, 1.5f)));
+            bullet.push_back(new bulletEnemy(&bulletTexture, 10.f, rand() % 910 + 6000, 0, 0.0f, 1.0f, sf::Vector2f(1.5f, 1.5f)));
+            bullet.push_back(new bulletEnemy(&bulletTexture, 10.f, rand() % 910 + 5800, 0, 0.0f, 1.0f, sf::Vector2f(1.5f, 1.5f)));
             row = 0;
         }
 
@@ -84,8 +84,8 @@ void bossState2::Update(float deltaTime, Player* player)
         {
             clockShoot1.restart();
             row = 0;
-            bullets.push_back(new bulletEnemy(&IceTexture, 10.f, rand() % 374 + 15606, 476, 0.0f, 0.0f, sf::Vector2f(3.0f, 5.0f)));
-            bullets.push_back(new bulletEnemy(&IceTexture, 10.f, rand() % 374 + 15606, 476, 0.0f, 0.0f, sf::Vector2f(3.0f, 5.0f)));
+            bullets.push_back(new bulletEnemy(&IceTexture, 10.f, rand() % 374 + 6200, 600, 0.0f, 0.0f, sf::Vector2f(6.0f, 7.0f)));
+            bullets.push_back(new bulletEnemy(&IceTexture, 10.f, rand() % 374 + 6350, 600, 0.0f, 0.0f, sf::Vector2f(6.0f, 7.0f)));
             /* bullets.push_back(new bulletEnemy(&IceTexture, 10.f, rand() % 374 + 15606, 496, 0.0f, 0.0f, sf::Vector2f(3.0f, 5.0f)));
              bullets.push_back(new bulletEnemy(&IceTexture, 10.f, rand() % 374 + 15606, 496, 0.0f, 0.0f, sf::Vector2f(3.0f, 5.0f)));*/
              /*bullets.push_back(new bulletEnemy(&IceTexture, 10.f, rand() % 910 + 15194, 496, 0.0f, 0.0f, sf::Vector2f(1.0f, 2.0f)));
@@ -201,8 +201,8 @@ void bossState2::updateBullet()
 
 void bossState2::initTexture()
 {
-    this->bulletTexture.loadFromFile("Player/bulletBoss2.png");
-    this->IceTexture.loadFromFile("Player/BulletbossState2.png");
+    this->bulletTexture.loadFromFile("boss/green.png");
+    this->IceTexture.loadFromFile("boss/smoke.png");
 }
 
 
