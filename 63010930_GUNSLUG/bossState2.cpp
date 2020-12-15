@@ -14,7 +14,7 @@ bossState2::bossState2(sf::Texture* texture, sf::Vector2u imageCount, float swit
     row = 0;
     faceRight = true;
 
-    this->hp = 50;
+    this->hp = 30;
 
     body.setSize(sf::Vector2f(120, 300));
     body.setOrigin(body.getSize() / 2.0f);

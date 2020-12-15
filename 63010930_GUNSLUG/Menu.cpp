@@ -6,6 +6,7 @@ Menu::Menu(float width, float height)
 	{
 		//handel error
 	}
+
 	menu[0].setFont(font);
 	menu[0].setCharacterSize(60);
 	menu[0].setFillColor(sf::Color::Red);
@@ -23,6 +24,14 @@ Menu::Menu(float width, float height)
 	menu[2].setFillColor(sf::Color::White);
 	menu[2].setString("Exit");
 	menu[2].setPosition(sf::Vector2f(650, 600));
+
+	/*menu[3].setFont(font);
+	menu[3].setCharacterSize(60);
+	menu[3].setFillColor(sf::Color::Red);
+	menu[3].setOutlineColor(sf::Color::Yellow);
+	menu[3].setOutlineThickness(3);
+	menu[3].setString("ioi");
+	menu[3].setPosition(sf::Vector2f(650, 100));*/
 
 	selectedItemIndex = 0;
 }

@@ -9,7 +9,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
     this->canJump = false;
     this->row = 0;
     this->faceRight = true;
-    this->HP = 1000000;
+    this->HP = 100;
 
 
 
@@ -78,7 +78,7 @@ void Player::Update(float deltaTime)
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        velocity.x += speed*5;
+        velocity.x += speed;
         if (velocity.y > 0 || velocity.y < 0)
         {
             row = 2;

@@ -15,7 +15,7 @@ Boss::Boss(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, floa
     row = 0;
     faceRight = true;
 
-    this->hp = 50;
+    this->hp = 30;
 
     body.setSize(sf::Vector2f(65 * 2, 46 * 2));
     body.setOrigin(body.getSize() / 2.0f);

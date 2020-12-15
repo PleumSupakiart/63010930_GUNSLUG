@@ -17,7 +17,7 @@ BossState3::BossState3(sf::Texture* texture, sf::Vector2u imageCount, float swit
     row = 0;
     faceRight = true;
 
-    this->hp = 10;
+    this->hp = 40;
 
     body.setSize(sf::Vector2f(30 * 1.5 * 3 * 1.5, 26 * 1.5 * 4 * 1.5));
     body.setOrigin(body.getSize() / 2.0f);
@@ -70,20 +70,10 @@ void BossState3::Update(float deltaTime, Player* player)
     {
         body.setScale(1.0, 1.0);
         body.setOrigin(body.getSize() / 2.0f);
-        if (r == 0 && clockShoot.getElapsedTime().asSeconds() >= 0.5)
-        {
-            clockShoot.restart();
-            velocity.y -= speed;
-
-            bird.push_back(new Birdstate3(&IceTexture, sf::Vector2u(5, 1), 0.3f, 100.0f, sf::Vector2f(0, 502.5 - rand() % 380), sf::Vector2f(0.2f, 0.2f)));
-            row = 1;
+       
 
 
-
-        }
-
-
-        else if (r == 1 && clockShoot1.getElapsedTime().asSeconds() >= 0.7)
+         if (r == 1 && clockShoot1.getElapsedTime().asSeconds() >= 0.7)
         {
             clockShoot1.restart();
             velocity.y += speed;
@@ -122,7 +112,7 @@ void BossState3::Update(float deltaTime, Player* player)
             clockShoot3.restart();
             velocity.y += speed;
             row = 0;
-            bullets.push_back(new bulletEnemy(&bulletTexture, 20.0f, body.getPosition().x, body.getPosition().y, 1.0f, 0.0f, sf::Vector2f(1.5f, 1.5f)));
+            bullets.push_back(new bulletEnemy(&bulletTexture, 20.0f, body.getPosition().x, body.getPosition().y, 1.0f, 0.0f, sf::Vector2f(1.f, 1.f)));
 
 
         }
@@ -254,8 +244,8 @@ void BossState3::updateBullet()
 
 void BossState3::initTexture()
 {
-    this->bulletTexture.loadFromFile("Player/bulletbossState3.png");
-    this->IceTexture.loadFromFile("Player/Bird.png");
+    this->bulletTexture.loadFromFile("bulletboss3.png");
+   
 
 }
 
